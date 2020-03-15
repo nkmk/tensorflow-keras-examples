@@ -16,7 +16,7 @@ test_ds = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(32)
 class MyModel(tf.keras.Model):
     def __init__(self):
         super(MyModel, self).__init__()
-        self.flatten = tf.keras.layers.Flatten(input_shape=(28, 28))
+        self.flatten = tf.keras.layers.Flatten()
         self.fc1 = tf.keras.layers.Dense(128, activation='relu')
         self.fc2 = tf.keras.layers.Dense(10, activation='softmax')
         self.dropout = tf.keras.layers.Dropout(0.2)
