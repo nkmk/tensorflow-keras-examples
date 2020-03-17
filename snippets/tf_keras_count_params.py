@@ -148,16 +148,16 @@ print(type(model.weights[0]))
 # <class 'tensorflow.python.ops.resource_variable_ops.ResourceVariable'>
 
 for w in model.weights:
-    print(w.name, '\t', np.prod(w.shape))
-# L0_conv2d/kernel:0 	 100
-# L0_conv2d/bias:0 	 1
-# L1_dense/kernel:0 	 10
-# L2_dense/kernel:0 	 10
-# L2_dense/bias:0 	 1
-# L3_bn/gamma:0 	 1
-# L3_bn/beta:0 	 1
-# L3_bn/moving_mean:0 	 1
-# L3_bn/moving_variance:0 	 1
+    print(w.name, ' - ', np.prod(w.shape))
+# L0_conv2d/kernel:0  -  100
+# L0_conv2d/bias:0  -  1
+# L1_dense/kernel:0  -  10
+# L2_dense/kernel:0  -  10
+# L2_dense/bias:0  -  1
+# L3_bn/gamma:0  -  1
+# L3_bn/beta:0  -  1
+# L3_bn/moving_mean:0  -  1
+# L3_bn/moving_variance:0  -  1
 
 print(type(model.get_weights()))
 # <class 'list'>
@@ -200,6 +200,24 @@ model.summary()
 # Non-trainable params: 12
 # _________________________________________________________________
 
+print(model.layers[1].trainable)
+# False
+
+print(model.layers[1].trainable_weights)
+# []
+
+print(model.layers[1].non_trainable_weights == model.layers[1].weights)
+# True
+
+print(model.layers[2].trainable)
+# True
+
+print(model.layers[2].non_trainable_weights)
+# []
+
+print(model.layers[2].trainable_weights == model.layers[2].weights)
+# True
+
 trainable_params = sum(np.prod(w.shape) for w in model.trainable_weights)
 print(trainable_params)
 # 114
@@ -212,14 +230,14 @@ print(model.layers[3].trainable)
 # True
 
 for w in model.layers[3].trainable_weights:
-    print(w.name, '\t', np.prod(w.shape))
-# L3_bn/gamma:0 	 1
-# L3_bn/beta:0 	 1
+    print(w.name, ' - ', np.prod(w.shape))
+# L3_bn/gamma:0  -  1
+# L3_bn/beta:0  -  1
 
 for w in model.layers[3].non_trainable_weights:
-    print(w.name, '\t', np.prod(w.shape))
-# L3_bn/moving_mean:0 	 1
-# L3_bn/moving_variance:0 	 1
+    print(w.name, ' - ', np.prod(w.shape))
+# L3_bn/moving_mean:0  -  1
+# L3_bn/moving_variance:0  -  1
 
 # NG
 trainable_params = sum(l.count_params() for l in model.layers if l.trainable)
