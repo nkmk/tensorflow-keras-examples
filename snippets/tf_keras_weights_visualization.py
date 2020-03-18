@@ -417,6 +417,8 @@ pil_img = Image.fromarray(montage).resize(
 
 pil_img.save('../data/img/dst/resnet50_conv1_conv.png')
 
+# ![](../data/img/dst/resnet50_conv1_conv.png)
+
 w = model.get_layer('conv3_block1_2_conv').kernel.numpy()
 print(type(w))
 # <class 'numpy.ndarray'>
@@ -437,3 +439,5 @@ print(montage.shape)
 # (384, 384)
 
 Image.fromarray(montage).save('../data/img/dst/resnet50_conv3_block1_2_conv.png')
+
+# ![](../data/img/dst/resnet50_conv3_block1_2_conv.png)
