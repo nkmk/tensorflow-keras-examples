@@ -412,7 +412,7 @@ print(montage.shape)
 # (56, 56, 3)
 
 pil_img = Image.fromarray(montage).resize(
-    (montage.shape[0] * 8, montage.shape[1] * 8)
+    (montage.shape[1] * 8, montage.shape[0] * 8)
 )
 
 pil_img.save('../data/img/dst/resnet50_conv1_conv.png')
