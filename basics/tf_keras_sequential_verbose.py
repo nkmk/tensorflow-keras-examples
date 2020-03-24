@@ -152,6 +152,10 @@ model_1.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.01),
                 loss=tf.keras.losses.SparseCategoricalCrossentropy(),
                 metrics=[tf.keras.metrics.SparseCategoricalAccuracy()])
 
+model_1.compile(optimizer=tf.keras.optimizers.Adam(),
+                loss=tf.keras.losses.sparse_categorical_crossentropy,
+                metrics=[tf.keras.metrics.sparse_categorical_accuracy])
+
 callbacks = [tf.keras.callbacks.EarlyStopping(patience=2, restore_best_weights=True),
              tf.keras.callbacks.ModelCheckpoint(
                  '../data/temp/mnist_sequential_{epoch:03d}_{val_loss:.4f}.h5',
@@ -162,29 +166,29 @@ history = model.fit(x_train, y_train, batch_size=128, epochs=20,
                     validation_split=0.2, callbacks=callbacks)
 # Train on 48000 samples, validate on 12000 samples
 # Epoch 1/20
-# 48000/48000 [==============================] - 2s 35us/sample - loss: 0.4443 - accuracy: 0.8751 - val_loss: 0.2079 - val_accuracy: 0.9427
+# 48000/48000 [==============================] - 1s 29us/sample - loss: 0.4443 - accuracy: 0.8751 - val_loss: 0.2079 - val_accuracy: 0.9427
 # Epoch 2/20
-# 48000/48000 [==============================] - 1s 28us/sample - loss: 0.2112 - accuracy: 0.9393 - val_loss: 0.1507 - val_accuracy: 0.9584
+# 48000/48000 [==============================] - 1s 22us/sample - loss: 0.2112 - accuracy: 0.9393 - val_loss: 0.1507 - val_accuracy: 0.9584
 # Epoch 3/20
 # 48000/48000 [==============================] - 1s 23us/sample - loss: 0.1590 - accuracy: 0.9540 - val_loss: 0.1238 - val_accuracy: 0.9647
 # Epoch 4/20
 # 48000/48000 [==============================] - 1s 23us/sample - loss: 0.1302 - accuracy: 0.9616 - val_loss: 0.1083 - val_accuracy: 0.9679
 # Epoch 5/20
-# 48000/48000 [==============================] - 1s 28us/sample - loss: 0.1111 - accuracy: 0.9671 - val_loss: 0.0992 - val_accuracy: 0.9709
+# 48000/48000 [==============================] - 1s 22us/sample - loss: 0.1111 - accuracy: 0.9671 - val_loss: 0.0992 - val_accuracy: 0.9709
 # Epoch 6/20
-# 48000/48000 [==============================] - 2s 32us/sample - loss: 0.0960 - accuracy: 0.9710 - val_loss: 0.0927 - val_accuracy: 0.9719
+# 48000/48000 [==============================] - 1s 23us/sample - loss: 0.0960 - accuracy: 0.9710 - val_loss: 0.0927 - val_accuracy: 0.9719
 # Epoch 7/20
-# 48000/48000 [==============================] - 1s 27us/sample - loss: 0.0855 - accuracy: 0.9742 - val_loss: 0.0880 - val_accuracy: 0.9732
+# 48000/48000 [==============================] - 1s 24us/sample - loss: 0.0855 - accuracy: 0.9742 - val_loss: 0.0880 - val_accuracy: 0.9732
 # Epoch 8/20
-# 48000/48000 [==============================] - 1s 27us/sample - loss: 0.0748 - accuracy: 0.9772 - val_loss: 0.0809 - val_accuracy: 0.9760
+# 48000/48000 [==============================] - 1s 23us/sample - loss: 0.0748 - accuracy: 0.9772 - val_loss: 0.0809 - val_accuracy: 0.9760
 # Epoch 9/20
-# 48000/48000 [==============================] - 1s 27us/sample - loss: 0.0691 - accuracy: 0.9787 - val_loss: 0.0819 - val_accuracy: 0.9743
+# 48000/48000 [==============================] - 1s 24us/sample - loss: 0.0691 - accuracy: 0.9787 - val_loss: 0.0819 - val_accuracy: 0.9743
 # Epoch 10/20
-# 48000/48000 [==============================] - 1s 31us/sample - loss: 0.0630 - accuracy: 0.9808 - val_loss: 0.0771 - val_accuracy: 0.9758
+# 48000/48000 [==============================] - 1s 23us/sample - loss: 0.0630 - accuracy: 0.9808 - val_loss: 0.0771 - val_accuracy: 0.9758
 # Epoch 11/20
-# 48000/48000 [==============================] - 1s 27us/sample - loss: 0.0569 - accuracy: 0.9831 - val_loss: 0.0801 - val_accuracy: 0.9753
+# 48000/48000 [==============================] - 1s 22us/sample - loss: 0.0569 - accuracy: 0.9831 - val_loss: 0.0801 - val_accuracy: 0.9753
 # Epoch 12/20
-# 48000/48000 [==============================] - 1s 28us/sample - loss: 0.0518 - accuracy: 0.9844 - val_loss: 0.0778 - val_accuracy: 0.9754
+# 48000/48000 [==============================] - 1s 22us/sample - loss: 0.0518 - accuracy: 0.9844 - val_loss: 0.0778 - val_accuracy: 0.9754
 
 print(type(history))
 # <class 'tensorflow.python.keras.callbacks.History'>
